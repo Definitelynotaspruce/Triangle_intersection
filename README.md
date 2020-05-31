@@ -6,7 +6,8 @@
 Program reads coordinates of 6 vertices from input file, checks if the intersection occurs with the [Moller's](https://web.stanford.edu/class/cs277/resources/papers/Moller1997b.pdf) algorythm and generates *OFF* file. 
 
 Input file *input.txt* example:
-(The given numbers are the coordinates of triangle vertices)
+
+*(The given numbers are the coordinates of triangle vertices)*
 ```shell
 0.818 0.430 0.798
 0.380 0.387 0.626
