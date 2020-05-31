@@ -77,7 +77,9 @@ function compute_intervals_isectline(VERT0, VERT1, VERT2, VV0, VV1, VV2, D0, D1,
     else if (D2 != 0.0)
         return [isect(VERT2, VERT0, VERT1, VV2, VV0, VV1, D2, D0, D1, isect0, isect1, isectpoint0, isectpoint1), false];
     else
-        return [[isect0, isect1, isectpoint0, isectpoint1], true]; //triangles are coplanar
+        return [
+            [isect0, isect1, isectpoint0, isectpoint1], true
+        ]; //triangles are coplanar
     return false;
 }
 
@@ -165,18 +167,15 @@ function coplanar_tri_tri(N, V0, V1, V2, U0, U1, U2) {
         if (A[0] > A[2]) {
             i0 = 1;
             i1 = 2;
-        }
-        else {
+        } else {
             i0 = 0;
             i1 = 1;
         }
-    }
-    else {
+    } else {
         if (A[2] > A[1]) {
             i0 = 0;
             i1 = 1;
-        }
-        else {
+        } else {
             i0 = 0;
             i1 = 2;
         }
@@ -202,11 +201,17 @@ function coplanar_tri_tri(N, V0, V1, V2, U0, U1, U2) {
 
 function tri_tri_intersect_with_isectline(V0, V1, V2, U0, U1, U2) {
     // Variable declarations
-    let E1 = [0.0, 0.0, 0.0], E2 = [0.0, 0.0, 0.0];
-    let N1 = [0.0, 0.0, 0.0], N2 = [0.0, 0.0, 0.0], D = [0.0, 0.0, 0.0];
-    let isect1 = [0.0, 0.0], isect2 = [0.0, 0.0];
-    let isectpointA1 = [0.0, 0.0, 0.0], isectpointA2 = [0.0, 0.0, 0.0];
-    let isectpointB1 = [0.0, 0.0, 0.0], isectpointB2 = [0.0, 0.0, 0.0];
+    let E1 = [0.0, 0.0, 0.0],
+        E2 = [0.0, 0.0, 0.0];
+    let N1 = [0.0, 0.0, 0.0],
+        N2 = [0.0, 0.0, 0.0],
+        D = [0.0, 0.0, 0.0];
+    let isect1 = [0.0, 0.0],
+        isect2 = [0.0, 0.0];
+    let isectpointA1 = [0.0, 0.0, 0.0],
+        isectpointA2 = [0.0, 0.0, 0.0];
+    let isectpointB1 = [0.0, 0.0, 0.0],
+        isectpointB2 = [0.0, 0.0, 0.0];
     let du0du1 = du0du2 = dv0dv1 = dv0dv2 = 0.0;
     let d1 = d2 = du0 = du1 = du2 = dv0 = dv1 = dv2 = 0.0;
     let vp0 = vp1 = vp2 = up0 = up1 = up2 = 0.0;
@@ -278,10 +283,7 @@ function tri_tri_intersect_with_isectline(V0, V1, V2, U0, U1, U2) {
     [isect_first, isect_second, isectpointA1, isectpointA2] = resArr;
     isect1[0] = isect_first, isect1[1] = isect_second;
 
-    /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
-    !!!!!!!  at this point we know whether the triangles are coplanar  !!!!!!!! 
-    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
-
+    //if they are coplanar:
     if (coplanar)
         return coplanar_tri_tri(N1, V0, V1, V2, U0, U1, U2);
 
@@ -297,10 +299,7 @@ function tri_tri_intersect_with_isectline(V0, V1, V2, U0, U1, U2) {
     if (isect1[1] < isect2[0] || isect2[1] < isect1[0])
         return false;
 
-    /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
-    !!!!!!!  at this point we know that the triangles intersect   !!!!!!!! 
-    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
-
+    // if they intersect:
     return true;
 }
 
@@ -380,7 +379,7 @@ U3 = [8.589, 0.860, 1.667];
 
 console.log("Intersection", tri_tri_intersect_with_isectline(V0, V1, V3, U1, U2, U3) ? "occurs" : "does not occur");
 
-// Coplanar No intersect
+// Komplanarus bet nesikerta
 V0 = [1, 1, 0];
 V1 = [1, 5, 0];
 V3 = [4, 1, 0];
@@ -390,7 +389,7 @@ U3 = [14, 1, 0];
 
 console.log("Intersection", tri_tri_intersect_with_isectline(V0, V1, V3, U1, U2, U3) ? "occurs" : "does not occur");
 
-// Coplanar Intersect
+// Komplanarus ir kertasi
 V0 = [1, 1, 0];
 V1 = [1, 5, 0];
 V3 = [4, 1, 0];
@@ -473,16 +472,16 @@ U2 = [8.464, 1.031, 7.496];
 U3 = [0.182, 4.119, 3.625];
 console.log(tri_tri_intersect_with_isectline(V0, V1, V3, U1, U2, U3)); */
 
-let RGB = [[0, 0, 0], [255, 255, 0]];
-const inputFileName = "input.txt", outputFileName = "output.off";
+let RGB = [
+    [0, 0, 0],
+    [255, 255, 0]
+];
+const inputFileName = "input.txt",
+    outputFileName = "output.off";
 
-console.log("Reading vertices from input file...");
+console.log("Reading vertices from input file");
 try {
     read_vertices_from_file(inputFileName, outputFileName, RGB);
 } catch (e) {
     console.error(e);
 }
-
-
-
-
