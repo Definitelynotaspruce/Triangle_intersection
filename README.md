@@ -1,9 +1,9 @@
 # Triangle_intersection
 ## Triangle - triangle intersection test with OFF file output
 
-### The program uses [Moller's](https://web.stanford.edu/class/cs277/resources/papers/Moller1997b.pdf) algorythm to detect the intersection of two triangles in 3D space.
+### The program uses [Moller's](https://web.stanford.edu/class/cs277/resources/papers/Moller1997b.pdf) algorithm to detect the intersection of two triangles in 3D space.
 
-Program reads coordinates of 6 vertices from input file, checks if the intersection occurs with the [Moller's](https://web.stanford.edu/class/cs277/resources/papers/Moller1997b.pdf) algorythm and generates *OFF* file. 
+Program reads coordinates of 6 vertices from input file, checks if the intersection occurs with the [Moller's](https://web.stanford.edu/class/cs277/resources/papers/Moller1997b.pdf) algorithm and generates *OFF* file. 
 
 Input file *input.txt* example:
 
